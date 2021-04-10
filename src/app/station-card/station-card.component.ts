@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import {Station} from '../model/station';
 
 @Component({
   selector: 'app-station-card',
@@ -8,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class StationCardComponent implements OnInit {
 
   constructor() { }
+
+  @Input()
+  station!: Station;
 
   ngOnInit(): void {
   }

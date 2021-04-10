@@ -9,6 +9,7 @@ import { StationCardComponent } from './station-card/station-card.component';
 import { SubmissionComponent } from './submission/submission.component';
 import { DetailsComponent } from './details/details.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HighlightedViewComponent } from './highlighted-view/highlighted-view.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     StationCardComponent,
     SubmissionComponent,
     DetailsComponent,
-    DashboardComponent
+    DashboardComponent,
+    HighlightedViewComponent
   ],
   imports: [
     BrowserModule

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Station } from '../model/station';
+import { STATIONS } from '../test-station-db';
 
 @Component({
   selector: 'app-list-view',
@@ -8,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class ListViewComponent implements OnInit {
 
   constructor() { }
+
+  stationList: Station[] = STATIONS;
 
   ngOnInit(): void {
   }
