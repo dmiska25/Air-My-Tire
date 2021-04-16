@@ -1,0 +1,108 @@
+h2{
+  color: white;
+  margin-right: 20px;
+}
+button {
+  height: 30px;
+  width: 120px;
+  background-color: #1976d2;
+  color: white;
+  margin-left: 20px;
+}
+
+.title {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+}
+
+.content {
+  display: flex;
+  margin: 82px auto 32px;
+  padding: 0 16px;
+  max-width: 960px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  border-radius: 4px;
+  border: 1px solid #eee;
+  background-color: #fafafa;
+  height: 200px;
+  width: 200px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  line-height: 24px;
+}
+
+a:hover {
+  color: #125699;
+}
+
+.listview{
+  height: 300px;
+  width: 1250px;
+  margin: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.highlightedlistview{
+  background-color: #1976d2c7;
+  height: 300px;
+  width: 1250px;
+  margin: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.search{
+  background-color: rgba(42, 33, 170, 0.514);
+}
+
+.search-container{
+  height: 50px;
+  background-color:#1976d2c7;
+  margin: 0 8px 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
