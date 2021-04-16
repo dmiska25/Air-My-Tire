@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Station } from '../model/station';
 import { STATIONS } from '../test-station-db';
 
@@ -9,10 +9,11 @@ import { STATIONS } from '../test-station-db';
 })
 export class HighlightedViewComponent implements OnInit {
 
+  //input list for apps
+@Input() hInputArray :Station[] = [];
+
   constructor() { }
 
-  //find way on search event to find 3 top stations and pass this array to child in template
-  stationList: Station[] = STATIONS;
 
   ngOnInit(): void {
   }

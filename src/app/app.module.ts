@@ -10,6 +10,7 @@ import { SubmissionComponent } from './submission/submission.component';
 import { DetailsComponent } from './details/details.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HighlightedViewComponent } from './highlighted-view/highlighted-view.component';
+import{FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HighlightedViewComponent } from './highlighted-view/highlighted-view.co
     HighlightedViewComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,7 +6,18 @@
 <br>
 
 
-<app-search class="search">            </app-search>
-<!-- causeing compiling error, not sure why yet -->
-<app-highlighted-view class = "highlightedlistview">  </app-highlighted-view>
-<app-list-view class="listview" >             </app-list-view>
+<!-- <app-search class="search" >            </app-search> -->
+
+<div class="search-container">
+    <h2>ZIPCODE:  </h2>
+<input [(ngModel)]="searchText" style="width: 300px; height: 30px;" >
+<button (click)="search(searchText)" style=" margin-left: 30px ;height: 40px; width: 120px;" >Search</button>
+</div>
+
+<app-highlighted-view class = "highlightedlistview" 
+    [hInputArray]= "highlightedArray">   
+</app-highlighted-view>
+
+<app-list-view class="listview" 
+[inputArray]="listArray">                 
+</app-list-view>

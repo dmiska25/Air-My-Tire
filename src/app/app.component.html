@@ -1,5 +1,11 @@
-<app-nav-bar>     </app-nav-bar>
-<app-dashboard>   </app-dashboard> 
-<app-details>    </app-details>
-<app-submission>   </app-submission> 
+<app-nav-bar
+    (outputEventSubission) = "submission($event)"
+    (outputEventSearch) = "search($event)"
+>
+</app-nav-bar>
+<app-dashboard *ngIf= "showDashboard">   </app-dashboard> 
+
+<!-- details button has no function currently -->
+<app-details *ngIf= "showDetails">    </app-details>
+<app-submission *ngIf= "showSubmission">   </app-submission> 
 

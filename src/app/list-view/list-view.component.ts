@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Station } from '../model/station';
 import { STATIONS } from '../test-station-db';
 
@@ -9,11 +9,18 @@ import { STATIONS } from '../test-station-db';
 })
 export class ListViewComponent implements OnInit {
 
-  constructor() { }
+  //Input Array
+  @Input() inputArray :Station[] = [];
 
-  stationList: Station[] = STATIONS;
+
+
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-}
+
+
+   
+  }
+

@@ -10,10 +10,18 @@ export class StationCardComponent implements OnInit {
 
   constructor() { }
 
+  //outputt event to show deatils like in HW3
+  //passes contact clcked from view to dashboard to app component, changes view to edit form
+
+
+
   @Input()
   station!: Station;
 
   ngOnInit(): void {
   }
+
+
+
 
 }

@@ -31,7 +31,15 @@ export class AppComponent {
     this.showSubmission = true;
   }
 
+  submission( string: string){
+    this.showSubmissionComponent();
+    console.log("show submission "+string);
+  }
 
+  search( string : string){
+    this.showDashboardComponent();
+    console.log("show search " +string);
+  }
 
 
 }
