@@ -1,4 +1,5 @@
 export interface Station {
+    id: number;
     name: string;
     address: string;
     //operational is true

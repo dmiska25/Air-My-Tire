@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { Station } from '../model/station';
 import { StationCardComponent } from '../station-card/station-card.component';
-import { STATIONS } from '../test-station-db';
+import { StationService } from '../station.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,18 +10,20 @@ import { STATIONS } from '../test-station-db';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  // Injecting Stations service
+  constructor(private stationService: StationService) { }
 
   
   searchText: string="";
-
-  searchList: Station[] = STATIONS;
+  searchList: Station[] = [];
 
   highlightedArray: Station[] = []; //max of 3 stations at all times
   listArray: Station[]= [];
 
   ngOnInit(): void {
-    this.HighlightedInIT();
+    this.getStations(); // retrieve stations and run HighlightedInIT
+    this.stationService.removeStation(11);
+    console.log("ran init!");
   }
 
   HighlightedInIT(){
@@ -67,5 +69,16 @@ export class DashboardComponent implements OnInit {
       }
       this.count++;
     }
+  }
+
+  // get and subscribe to stations service
+  getStations(): void {
+    this.stationService.getStations()
+      .subscribe(
+        stations => {
+          this.searchList = stations;
+          this.HighlightedInIT();
+        }
+        );
   }
 }
