@@ -1,4 +1,3 @@
-import { getTranslationDeclStmts } from '@angular/compiler/src/render3/view/template';
 import { Injectable } from '@angular/core';
 import { STATIONS } from './test-station-db';
 import { Observable, of } from 'rxjs';
@@ -12,7 +11,7 @@ import { map, tap } from 'rxjs/operators';
 export class StationService {
   //vars
   url: string = 'https://air-my-tire-default-rtdb.firebaseio.com/stations.json';
-  stations: Observable<Station[]> = this.getStations();
+  keyedStations: Station[] = [];
   nextID: number = 0;
 
 
@@ -31,61 +30,68 @@ export class StationService {
           this.nextID = (stationArray.length > 0) ? 
             Math.max(...stationArray.map(station=>station.id))+1 : 0;
 
+          this.keyedStations = data;
+
           return stationArray;
-         })
+         }),
+
       );
   }
 
 
   // add station and retrieve updated stations list
-  addStation(station: Station): void {
-    this.httpServ.post(this.url, station).subscribe( _ => this.getStations().subscribe());
+  addStation(station: Station): Observable<Station> {
+    station.id = this.nextID;
+    return this.httpServ.post<Station>(this.url, station).pipe(
+      tap(
+        _ => this.getStations().subscribe()
+      )
+    );
+    console.log("ran add station");
   }
 
   // update station and retrieve updated stations list
-  updateStation(station: Station): void {
-    this.httpServ.get<Station[]>
-      (this.url)
-      .pipe(
-         map( data => {
-          // find key assosiated with id and send put request
-          console.log(data.length);
-          for(let key in data) {
-            console.log(data[key].id);
-            if(data[key].id == station.id) {
-              this.httpServ.put
-                ("https://air-my-tire-default-rtdb.firebaseio.com/stations/"+key+".json", station)
-                .subscribe();
-            }
-          }
+  updateStation(station: Station): Observable<Station> {
+    let stationKey: string = 'void';
 
-          // retrieve updated stations list
-          this.getStations().subscribe();
-         })
-      ).subscribe();
+    // find key assosiated with id and send put request
+    console.log(this.keyedStations.length);
+    for(let key in this.keyedStations) {
+      console.log(this.keyedStations[key].id);
+      if(this.keyedStations[key].id == station.id) {
+        stationKey = key;
+      }
+    }
+
+    return this.httpServ.put<Station>
+    ("https://air-my-tire-default-rtdb.firebaseio.com/stations/"+stationKey+".json", station)
+      .pipe(
+        tap(
+          _ => this.getStations().subscribe()
+        )
+      )
   }
 
   // remove station and retrieve updated stations list
-  removeStation(id: number): void {
-    this.httpServ.get<Station[]>
-      (this.url)
-      .pipe(
-         map( data => {
-          // find key assosiated with id and send delete request
-          console.log(data.length);
-          for(let key in data) {
-            console.log(data[key].id);
-            if(data[key].id == id) {
-              this.httpServ.delete
-                ("https://air-my-tire-default-rtdb.firebaseio.com/stations/"+key+".json")
-                .subscribe();
-            }
-          }
+  removeStation(id: number): Observable<Station> {
+    let stationKey: string = 'void';
 
-          // retrieve updated stations list
-          this.getStations().subscribe();
-         })
-      ).subscribe();
+    // find key assosiated with id and send delete request
+    console.log(this.keyedStations.length);
+    for(let key in this.keyedStations) {
+      console.log(this.keyedStations[key].id);
+      if(this.keyedStations[key].id == id) {
+        stationKey = key;
+      }
+    }
+
+    return this.httpServ.delete<Station>
+    ("https://air-my-tire-default-rtdb.firebaseio.com/stations/"+stationKey+".json")
+      .pipe(
+        tap(
+          _ => this.getStations().subscribe()
+        )
+      )
   }
 
   // init server data

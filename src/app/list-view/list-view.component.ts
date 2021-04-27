@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { Station } from '../model/station';
-import { STATIONS } from '../test-station-db';
 
 @Component({
   selector: 'app-list-view',
@@ -13,14 +12,9 @@ export class ListViewComponent implements OnInit {
   @Input() inputArray :Station[] = [];
 
 
-
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-
-
-   
   }
 

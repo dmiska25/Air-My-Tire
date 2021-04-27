@@ -22,8 +22,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getStations(); // retrieve stations and run HighlightedInIT
-    this.stationService.removeStation(11);
-    console.log("ran init!");
   }
 
   HighlightedInIT(){
