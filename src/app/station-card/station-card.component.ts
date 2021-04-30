@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {Station} from '../model/station';
 
 @Component({
@@ -12,7 +12,11 @@ export class StationCardComponent implements OnInit {
 
   //outputt event to show deatils like in HW3
   //passes contact clcked from view to dashboard to app component, changes view to edit form
+  @Output() outputEventDetails: EventEmitter<Station> = new EventEmitter()
 
+  onClick(){
+    this.outputEventDetails.emit(this.station)
+  }
 
 
   @Input()

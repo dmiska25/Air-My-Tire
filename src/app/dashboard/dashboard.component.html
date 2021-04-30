@@ -9,7 +9,7 @@
 <!-- <app-search class="search" >            </app-search> -->
 
 <!-- TESTING -->
-<button (click)="getStations()">Test update stations list</button>
+<!-- <button (click)="getStations()">Test update stations list</button> -->
 <!-- TESTING -->
 
 <div class="search-container">
@@ -19,11 +19,15 @@
 </div>
 
 <app-highlighted-view class = "highlightedlistview" 
-    [hInputArray]= "highlightedArray">   
+    [hInputArray]= "highlightedArray"
+    (outputEventDetailsDash)="detailsDash($event)"
+    >   
 </app-highlighted-view>
 
-<app-list-view class="listview" 
-[inputArray]="listArray">                 
+<app-list-view  class="listview" 
+    [inputArray]="listArray"
+    (outputEventDetailsDash)="detailsDash($event)"
+    >                 
 </app-list-view>
 
 

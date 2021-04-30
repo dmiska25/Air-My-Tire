@@ -1,5 +1,26 @@
-<div>
+<div class="card-2"> 
 
-<p>THIS IS THE DETAILS PAGE FOR TESTING REASONS</p>
+
+        <h1>{{detailedStation.name}}</h1>
+        <br>
+        <h4>Address:        {{detailedStation.address}}</h4>
+        <h4>Operational:    {{detailedStation.operational}}</h4>
+        <h4>Free:           {{detailedStation.price}}</h4>
+        <h4>Cleanliness:    {{detailedStation.cleanliness}}</h4>
+        <h4>Safeness:       {{detailedStation.safeness}}</h4>
+       
+        <button class="button" ejs-button cssClass='e-link'>
+            <a href="{{link}}" 
+            target='_blank'> Google Maps
+            </a>
+        </button>
+
+        <br>
+
+        <button class="button-highlight"
+            (click)="Delete()"
+        >
+            Delete
+        </button>
 
 </div>

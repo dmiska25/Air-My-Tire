@@ -1,4 +1,4 @@
-import { Component, Input, OnInit} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Station } from '../model/station';
 
 @Component({
@@ -11,6 +11,13 @@ export class ListViewComponent implements OnInit {
   //Input Array
   @Input() inputArray :Station[] = [];
 
+  @Output() outputEventDetailsDash: EventEmitter<Station> = new EventEmitter()
+
+ 
+  detailsList(outStation : Station){
+    console.log("station passed to list")
+    this.outputEventDetailsDash.emit(outStation)
+  }
 
   constructor() { }
 

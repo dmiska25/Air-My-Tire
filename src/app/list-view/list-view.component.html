@@ -1,2 +1,6 @@
-<app-station-card *ngFor="let s of inputArray" [station] = "s"></app-station-card>
+<app-station-card 
+*ngFor="let s of inputArray" [station] = "s"
+(outputEventDetails)="detailsList($event)"
+>
+</app-station-card>
 

@@ -1,6 +1,7 @@
 <!-- add functionality wwith search -->
 <h2>Suggested</h2>
 
-
-
-<app-station-card *ngFor="let s of hInputArray" [station] = "s"></app-station-card>
+<app-station-card 
+*ngFor="let s of hInputArray" [station] = "s"
+(outputEventDetails)="detailsHighlight($event)"
+></app-station-card>

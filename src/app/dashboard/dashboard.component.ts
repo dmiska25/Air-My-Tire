@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { Station } from '../model/station';
 import { StationCardComponent } from '../station-card/station-card.component';
 import { StationService } from '../station.service';
@@ -10,73 +10,112 @@ import { StationService } from '../station.service';
 })
 export class DashboardComponent implements OnInit {
 
+
   // Injecting Stations service
   constructor(private stationService: StationService) { }
 
-  
-  searchText: string="";
-  searchList: Station[] = [];
+  @Input() InStation : Station[] =[] ;
 
+  @Output() outputEventDetailsApp: EventEmitter<Station> = new EventEmitter()
+  
+  //variables
+  searchText: string="";
+  count :number =0;
+  innerCount : number =0;
+  permList : Station[]= [];
+  tempList: Station[] = [];
+  best: Station[] =[]
   highlightedArray: Station[] = []; //max of 3 stations at all times
   listArray: Station[]= [];
+  boolean : boolean = false; // flag for the suggested section
+
 
   ngOnInit(): void {
     this.getStations(); // retrieve stations and run HighlightedInIT
   }
 
-  HighlightedInIT(){
-    this.listArray=[];
+    //support method or sorting
+    addRatings(station : Station){
+      return station.cleanliness+station.safeness
+    }
+
+    //organizes the suggesed list of top stations based on passed list
+  SuggestedInIT( useStation: Station[] ){
+    //restting arrays// defining out temp list
+    this.tempList=useStation
+    this.listArray= [];
     this.highlightedArray=[];
     this.count=0;
-    //run search to pick top three to pass to highlighted array and then to child to display
-    for(let station of this.searchList){
-      if(this.count<20){
+
+    //disyplays all stations
+    for(let station of this.tempList){
         this.listArray.push(station);
-        if(this.count<3){
-          //add way to search for top 3
-          this.highlightedArray.push(station);
-        }
         this.count++;
-      }
     }  
+
+    //sets random stations to be compared to
+    this.best[0] = this.tempList[0];
+    this.best[1] = this.tempList[1];
+    this.best[2] = this.tempList[2];
+
+    //compares the stations and replaces with better ones
+    for(let hStation of this.tempList){
+        this.boolean=false;
+        if(this.addRatings(hStation)>this.addRatings(this.best[0]) && this.boolean==false){
+          this.best[0]=hStation;
+          this.boolean=true;
+        }
+        else if(this.addRatings(hStation)>this.addRatings(this.best[1])&& this.boolean==false){
+          this.best[1]=hStation;
+          this.boolean=true;
+        }
+        else if(this.addRatings(hStation)>this.addRatings(this.best[2])&& this.boolean==false){
+          this.best[2]=hStation;
+          this.boolean=true;
+        }
+    }
+    this.highlightedArray=this.best;
   }
 
+ 
 
-  //not working yet
-  count :number =0;
   //run fuctions and then pass arrays as inpust to children to display
   search(zipcode :string ){
     //resetting variables
+    this.tempList=this.permList;
     this.listArray=[];
     this.highlightedArray=[];
-    this.count=0;
 
     //searching all for zipcode
-    for(let station of this.searchList){
+    for(let station of this.tempList){
       if(station.address.includes(zipcode)){
         this.listArray.push(station);
       }
     }
-     //search the list for top 3
-     //need to add top of list function
-     for(let hStation of this.listArray){
-      if(this.count<3){
-        //add way to search for top 3
-        this.highlightedArray.push(hStation);
-        console.log('added to highlighted');
-      }
-      this.count++;
-    }
+    
+    //takes care of suggested based on restricted list that matches zipcode
+    this.SuggestedInIT(this.listArray);
   }
 
-  // get and subscribe to stations service
+
+
+
+  //get and subscribe to stations service
   getStations(): void {
     this.stationService.getStations()
       .subscribe(
         stations => {
-          this.searchList = stations;
-          this.HighlightedInIT();
+          this.permList = stations;
+          this.SuggestedInIT(stations);
         }
         );
   }
+
+
+ 
+  detailsDash(outStation : Station){
+      console.log("station passed to dash")
+      this.outputEventDetailsApp.emit(outStation)
+  }
+
 }

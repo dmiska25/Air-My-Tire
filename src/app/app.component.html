@@ -1,11 +1,26 @@
 <app-nav-bar
-    (outputEventSubission) = "submission($event)"
-    (outputEventSearch) = "search($event)"
+(outputEventSubission) = "submission($event)"
+(outputEventSearch) = "search($event)"
 >
 </app-nav-bar>
-<app-dashboard *ngIf= "showDashboard">   </app-dashboard> 
+<app-dashboard 
+*ngIf= "showDashboard"
+[InStation]= "Stations"
+(outputEventDetailsApp)="detailsApp($event)"
+>   </app-dashboard> 
 
-<!-- details button has no function currently -->
-<app-details *ngIf= "showDetails">    </app-details>
-<app-submission *ngIf= "showSubmission">   </app-submission> 
+
+<app-details 
+*ngIf= "showDetails"
+[detailedStation]="detailsStation"
+(outputEventDeleted)="deleted($event)"
+>    
+</app-details>
+
+
+<app-submission 
+*ngIf= "showSubmission"
+(outputEventSubmit)="submit($event)"
+>   
+</app-submission> 
 

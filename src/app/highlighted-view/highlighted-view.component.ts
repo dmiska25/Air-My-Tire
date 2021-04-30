@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Station } from '../model/station';
 import { STATIONS } from '../test-station-db';
 
@@ -12,8 +12,14 @@ export class HighlightedViewComponent implements OnInit {
   //input list for apps
 @Input() hInputArray :Station[] = [];
 
+@Output() outputEventDetailsDash: EventEmitter<Station> = new EventEmitter()
+
   constructor() { }
 
+  detailsHighlight(outStation : Station){
+    console.log("station passed to list")
+    this.outputEventDetailsDash.emit(outStation)
+  }
 
   ngOnInit(): void {
   }

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import {StationService} from "../station.service";
 import { Station } from '../model/station';
 @Component({
@@ -8,6 +8,8 @@ import { Station } from '../model/station';
 })
 export class SubmissionComponent {
   
+  @Output() outputEventSubmit: EventEmitter<string> = new EventEmitter()
+
   name1: string="";
   address1:string="";
   operational1:boolean= false;
@@ -22,8 +24,10 @@ export class SubmissionComponent {
     this.address1 = address;
     console.log(this.name1, this.address1, this.operational1, this.price1, this.cleanliness1, this.safeness1);
     this.stationService.addStation({id: 0,name: this.name1, address: this.address1, operational: this.operational1,
-       price: this.price1, cleanliness: this.cleanliness1,safeness:this.safeness1}).subscribe();
-  }
+    price: this.price1, cleanliness: this.cleanliness1,safeness:this.safeness1}).subscribe();
+    this.outputEventSubmit.emit("station submitted")
+      }
+
   constructor(private stationService: StationService){
   }
 

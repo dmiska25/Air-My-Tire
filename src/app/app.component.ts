@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Station } from './model/station';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+   // Injecting Stations service
+   constructor() { }
+
+   
+  ngOnInit(): void {
+  }
+
   title = 'Air-My-Tire';
+  Stations :Station[] =[] ;
+
+
+
 
   //show variables for *ngIF
   showDashboard: boolean = true;
@@ -19,6 +32,7 @@ export class AppComponent {
     this.showDashboard = true;
     this.showDetails = false;
     this.showSubmission =false;
+    // window.location.reload();
   }
   showDetailsComponent(){
     this.showDashboard = false;
@@ -38,8 +52,21 @@ export class AppComponent {
 
   search( string : string){
     this.showDashboardComponent();
-    console.log("show search " +string);
   }
 
+  detailsStation! : Station
+  detailsApp(outStation : Station){
+    this.detailsStation=outStation;
+    console.log("station passed to App")
+    this.showDetailsComponent();
+}
+
+  submit(string : string){
+    this.showDashboardComponent();
+}
+
+  deleted(string: string){
+    this.showDashboardComponent();
+  }
 
 }
