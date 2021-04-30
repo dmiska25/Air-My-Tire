@@ -1,60 +1,56 @@
-<div class="container">
-    <div class="card-1">
+
+<div class="card-1">
+
+    <h1>Air My Tire New Submission</h1>
+
+
     <div class="card-body">
-    <h3>Air My Tire New Submission</h3>
-    <div class="form-group">
-        <label>Name:</label> <input class="form-control" type="text"  #name/>
-    </div>
-    <div class="form-group">
-        <label>Address:</label>
-        <input class="form-control" type="text"#address/>
-    </div>
-    <div class="form-group">
-        <label>Operational:</label>
-
-        <input class="form-control" type="Radio" name=op value="true" [(ngModel)]="operational1"/>
-        <label>Operational</label>
-        <input class="form-control" type="Radio" name=op value="false" [(ngModel)]="operational1"/>
-        <label>Not Operational</label>
-    </div>
-    <div class="form-group">
-        <label>Price:</label>
-        <input class="form-control" type="Radio" name=pr value="true" [(ngModel)]="price1"/>
-        <label>Free</label>
-        <input class="form-control" type="Radio" name=pr value="false" [(ngModel)]="price1"/>
-        <label>Not Free</label>
-    </div>
-    <div class="form-group">
-        <label>Cleanlyness:</label>
-        <input class="form-control" type="Radio" name=cl value="1" [(ngModel)]="cleanliness1"/>
-        <label>1</label>
-        <input class="form-control" type="Radio" name=cl value="2" [(ngModel)]="cleanliness1"/>
-        <label>2</label>
-        <input class="form-control" type="Radio" name=cl value="3" [(ngModel)]="cleanliness1"/>
-        <label>3</label>
-        <input class="form-control" type="Radio" name=cl value="4" [(ngModel)]="cleanliness1"/>
-        <label>4</label>
-        <input class="form-control" type="Radio" name=cl value="5" [(ngModel)]="cleanliness1"/>
-        <label>5</label>
-    </div>
-        <div class="form-group">
-        <label>Safeness:</label>
-        <input class="form-control" type="Radio" name=sa value="1" [(ngModel)]="safeness1"/>
-        <label>1</label>
-        <input class="form-control" type="Radio" name=sa value="2" [(ngModel)]="safeness1"/>
-        <label>2</label>
-        <input class="form-control" type="Radio" name=sa value="3" [(ngModel)]="safeness1"/>
-        <label>3</label>
-        <input class="form-control" type="Radio" name=sa value="4" [(ngModel)]="safeness1"/>
-        <label>4</label>
-        <input class="form-control" type="Radio" name=sa value="5" [(ngModel)]="safeness1"/>
-        <label>5</label>
-    </div>
-    <div>
-        <button (click)="onCreateStation(name.value, address.value)">Submit</button>
-    </div>
-
     
+        <div class="form-group">
+            <label>Name:</label> <input class="form-control" type="text"  #name/>
+        <br>
+            <label>Address:</label>
+            <input class="form-control" type="text"#address/>
+        <br>
+            <label>Operational:</label>
+
+            <input class="form-control" type="Radio" name=op value="true" [(ngModel)]="operational1"/>
+            <label>Operational</label>
+            <input class="form-control" type="Radio" name=op value="false" [(ngModel)]="operational1"/>
+            <label>Not Operational</label>
+        <br>
+            <label>Price:</label>
+            <input class="form-control" type="Radio" name=pr value="true" [(ngModel)]="price1"/>
+            <label>Free</label>
+            <input class="form-control" type="Radio" name=pr value="false" [(ngModel)]="price1"/>
+            <label>Not Free</label>
+        <br>
+            <label>Cleanlyness:</label>
+            <input class="form-control" type="Radio" name=cl value="1" [(ngModel)]="cleanliness1"/>
+            <label>1</label>
+            <input class="form-control" type="Radio" name=cl value="2" [(ngModel)]="cleanliness1"/>
+            <label>2</label>
+            <input class="form-control" type="Radio" name=cl value="3" [(ngModel)]="cleanliness1"/>
+            <label>3</label>
+            <input class="form-control" type="Radio" name=cl value="4" [(ngModel)]="cleanliness1"/>
+            <label>4</label>
+            <input class="form-control" type="Radio" name=cl value="5" [(ngModel)]="cleanliness1"/>
+            <label>5</label>
+        <br>
+            <label>Safeness:</label>
+            <input class="form-control" type="Radio" name=sa value="1" [(ngModel)]="safeness1"/>
+            <label>1</label>
+            <input class="form-control" type="Radio" name=sa value="2" [(ngModel)]="safeness1"/>
+            <label>2</label>
+            <input class="form-control" type="Radio" name=sa value="3" [(ngModel)]="safeness1"/>
+            <label>3</label>
+            <input class="form-control" type="Radio" name=sa value="4" [(ngModel)]="safeness1"/>
+            <label>4</label>
+            <input class="form-control" type="Radio" name=sa value="5" [(ngModel)]="safeness1"/>
+            <label>5</label>
         </div>
+
     </div>
+    <button (click)="onCreateStation(name.value, address.value)">Submit</button>
+
 </div>

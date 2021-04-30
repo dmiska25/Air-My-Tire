@@ -2,6 +2,11 @@ h2{
   color: white;
   margin-right: 20px;
 }
+
+h4{
+  margin-top: 5px;
+}
+
 button {
   height: 30px;
   width: 120px;
@@ -18,8 +23,23 @@ button {
   margin-left: 20px;
 }
 
+label{
+  font-size: 25px;
+  padding: 10px;
+}
+
+a:hover {
+  color: #125699;
+}
+
+
 a{
   color: white;
+}
+
+.form-group{
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .title {
@@ -48,10 +68,10 @@ a{
 
 .content {
   display: flex;
-  margin: 82px auto 32px;
+  margin: auto;
   padding: 0 16px;
   max-width: 960px;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
 }
 
@@ -63,11 +83,11 @@ a{
   width: 200px;
   margin-left: 20px;
   margin-right: 20px;
-  margin-top: 20px;
+  margin-top: 5px;
   margin-bottom: 20px;
-  padding: 16px;
+  padding: 5px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   transition: all 0.2s ease-in-out;
@@ -78,43 +98,22 @@ a{
   border-radius: 4px;
   border: 1px solid #eee;
   background-color: #fafafa;
-  height: 350px;
-  width: 250px;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 16px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.2s ease-in-out;
-  line-height: 24px;
-}
-
-.card-2 {
-  border-radius: 4px;
-  border: 1px solid #eee;
-  background-color: #fafafa;
-  height: 600px;
-  width: 600px;
+  height: auto;
+  width: 400 px;
   margin-left: auto;
-  margin-right:  auto;
-  margin-top: 100px;
-  margin-bottom: 10px;
-  padding: 16px;
+  margin-right: auto;
+  margin-top: 200px;
+  margin-bottom: 20px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   transition: all 0.2s ease-in-out;
-  line-height: 24px;
+  line-height: 40px;
 }
 
-a:hover {
-  color: #125699;
-}
+
 
 .listview{
   display: flex;
@@ -130,7 +129,7 @@ a:hover {
 .highlightedlistview{
   background-color: #1976d2c7;
   height: 300px;
-  width: 1250px;
+  width: auto;
   margin: auto;
   padding: 16px;
   display: flex;
@@ -147,7 +146,8 @@ a:hover {
 .search-container{
   height: 50px;
   background-color:#1976d2c7;
-  margin: 0 8px 16px;
+  width: auto;
+  margin: auto;
   padding: 16px;
   display: flex;
   flex-direction: row;

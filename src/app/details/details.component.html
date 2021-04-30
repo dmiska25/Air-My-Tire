@@ -1,13 +1,18 @@
-<div class="card-2"> 
-
-
+<div class="container">
+<div class="card-1"> 
         <h1>{{detailedStation.name}}</h1>
-        <br>
-        <h4>Address:        {{detailedStation.address}}</h4>
-        <h4>Operational:    {{detailedStation.operational}}</h4>
-        <h4>Free:           {{detailedStation.price}}</h4>
-        <h4>Cleanliness:    {{detailedStation.cleanliness}}</h4>
-        <h4>Safeness:       {{detailedStation.safeness}}</h4>
+        <div class="form-group">
+            <label>Address:        {{detailedStation.address}}</label> 
+            <br>
+            <label>Operational:    {{detailedStation.operational}}</label> 
+            <br>
+            <label>Free:           {{detailedStation.price}}</label> 
+            <br>
+            <label>Cleanliness:    {{detailedStation.cleanliness}}</label> 
+            <br>
+            <label>Safeness:       {{detailedStation.safeness}}</label> 
+        </div>
+
        
         <button class="button" ejs-button cssClass='e-link'>
             <a href="{{link}}" 
@@ -23,4 +28,5 @@
             Delete
         </button>
 
+    </div>
 </div>

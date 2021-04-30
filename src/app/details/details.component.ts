@@ -21,9 +21,9 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     this.address = this.detailedStation.address;
     //takes address and turns it into websearchable function
-    this.address=this.address.split(" ").join('/');
-    this.address=this.address.split(",").join('/');
-    this.address=this.address.split(".").join('/');
+    this.address=this.address.split(" ").join('+');
+    this.address=this.address.split(",").join('+');
+    this.address=this.address.split(".").join('+');
     this.link = this.search+this.address+"";
     console.log(this.link)
   }

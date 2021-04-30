@@ -1,7 +1,12 @@
-<!-- add functionality wwith search -->
-<h2>Suggested</h2>
+<div class="content">
+    
+    <h1 style="color: whitesmoke;">Suggested</h1>
+    
 
-<app-station-card 
-*ngFor="let s of hInputArray" [station] = "s"
-(outputEventDetails)="detailsHighlight($event)"
-></app-station-card>
+    
+    <app-station-card 
+    *ngFor="let s of hInputArray" [station] = "s"
+    (outputEventDetails)="detailsHighlight($event)"
+    ></app-station-card>
+    
+</div>
