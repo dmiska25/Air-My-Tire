@@ -14,7 +14,6 @@ export class StationService {
   keyedStations: Station[] = [];
   nextID: number = 0;
 
-
   // retrieve stations
   getStations(): Observable<Station[]> {
     return this.httpServ.get<Station[]>
@@ -50,6 +49,8 @@ export class StationService {
     console.log("ran add station");
   }
 
+
+
   // update station and retrieve updated stations list
   updateStation(station: Station): Observable<Station> {
     let stationKey: string = 'void';
@@ -72,19 +73,23 @@ export class StationService {
       )
   }
 
+
+
+
   // remove station and retrieve updated stations list
   removeStation(id: number): Observable<Station> {
     let stationKey: string = 'void';
 
     // find key assosiated with id and send delete request
     console.log(this.keyedStations.length);
+    
     for(let key in this.keyedStations) {
       console.log(this.keyedStations[key].id);
       if(this.keyedStations[key].id == id) {
         stationKey = key;
       }
     }
-
+    //deleteing portion
     return this.httpServ.delete<Station>
     ("https://air-my-tire-default-rtdb.firebaseio.com/stations/"+stationKey+".json")
       .pipe(
@@ -93,6 +98,7 @@ export class StationService {
         )
       )
   }
+
 
   // init server data
   initFirebase() {

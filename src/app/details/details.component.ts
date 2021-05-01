@@ -25,7 +25,6 @@ export class DetailsComponent implements OnInit {
     this.address=this.address.split(",").join('+');
     this.address=this.address.split(".").join('+');
     this.link = this.search+this.address+"";
-    console.log(this.link)
   }
 
   Delete(){
