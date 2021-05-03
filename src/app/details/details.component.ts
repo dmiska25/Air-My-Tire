@@ -28,8 +28,9 @@ export class DetailsComponent implements OnInit {
   }
 
   Delete(){
-    this.stationService.removeStation(this.detailedStation.id);
-    this.outputEventDeleted.emit(this.detailedStation.id+" Deleted")
+    this.stationService.removeStation(this.detailedStation.id).subscribe(
+      _ => this.outputEventDeleted.emit(this.detailedStation.id+" Deleted")
+    );
   }
 
   showMap(){

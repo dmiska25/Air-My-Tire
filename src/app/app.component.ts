@@ -59,11 +59,11 @@ export class AppComponent {
     this.detailsStation=outStation;
     console.log("station passed to App")
     this.showDetailsComponent();
-}
+  }
 
   submit(string : string){
     this.showDashboardComponent();
-}
+  }
 
   deleted(string: string){
     this.showDashboardComponent();

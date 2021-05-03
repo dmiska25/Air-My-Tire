@@ -24,9 +24,11 @@ export class SubmissionComponent {
     this.address1 = address;
     console.log(this.name1, this.address1, this.operational1, this.price1, this.cleanliness1, this.safeness1);
     this.stationService.addStation({id: 0,name: this.name1, address: this.address1, operational: this.operational1,
-    price: this.price1, cleanliness: this.cleanliness1,safeness:this.safeness1}).subscribe();
-    this.outputEventSubmit.emit("station submitted")
-      }
+    price: this.price1, cleanliness: this.cleanliness1,safeness:this.safeness1}).subscribe(
+      _ => this.outputEventSubmit.emit("station submitted")
+    );
+    
+  }
 
   constructor(private stationService: StationService){
   }
