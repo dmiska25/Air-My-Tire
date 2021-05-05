@@ -35,11 +35,6 @@ export class DashboardComponent implements OnInit {
     this.getStations(); // retrieve stations and run HighlightedInIT
   }
 
-    //support method or sorting
-    addRatings(station : Station){
-      return station.cleanliness+station.safeness
-    }
-
     //organizes the suggesed list of top stations based on passed list
   SuggestedInIT( useStation: Station[] ){
     //restting arrays// defining out temp list
@@ -50,8 +45,10 @@ export class DashboardComponent implements OnInit {
 
     //disyplays all stations
     for(let station of this.tempList){
+        if( this.count <35 ){
         this.listArray.push(station);
         this.count++;
+      }
     }  
 
     //sets random stations to be compared to
@@ -77,6 +74,13 @@ export class DashboardComponent implements OnInit {
     }
     this.highlightedArray=this.best;
   }
+
+  
+    //support method or sorting
+    addRatings(station : Station){
+      return station.cleanliness+station.safeness
+    }
+
 
   //helper funtion to find THE WORST station
   getWorstStation(useStation: Station[]){

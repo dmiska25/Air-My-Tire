@@ -14,13 +14,14 @@ export class StationCardComponent implements OnInit {
   //passes contact clcked from view to dashboard to app component, changes view to edit form
   @Output() outputEventDetails: EventEmitter<Station> = new EventEmitter()
 
+  @Input()
+  station!: Station;
+
+
   onClick(){
     this.outputEventDetails.emit(this.station)
   }
 
-
-  @Input()
-  station!: Station;
 
   ngOnInit(): void {
   }
