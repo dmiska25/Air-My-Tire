@@ -28,6 +28,7 @@ export class DashboardComponent implements OnInit {
   highlightedArray: Station[] = []; //max of 3 stations at all times
   listArray: Station[]= [];
   boolean : boolean = false; // flag for the suggested section
+  tempStation!: Station;
 
 
   ngOnInit(): void {
@@ -54,9 +55,9 @@ export class DashboardComponent implements OnInit {
     }  
 
     //sets random stations to be compared to
-    this.best[0] = this.tempList[0];
-    this.best[1] = this.tempList[1];
-    this.best[2] = this.tempList[2];
+    this.best[0] = this.getWorstStation(useStation)
+    this.best[1] = this.getWorstStation(useStation)
+    this.best[2] = this.getWorstStation(useStation)
 
     //compares the stations and replaces with better ones
     for(let hStation of this.tempList){
@@ -77,6 +78,18 @@ export class DashboardComponent implements OnInit {
     this.highlightedArray=this.best;
   }
 
+  //helper funtion to find THE WORST station
+  getWorstStation(useStation: Station[]){
+    this.tempList=useStation;
+    this.tempStation=useStation[0];
+    //compares the stations and replaces with better ones
+    for(let station of this.tempList){
+        if(this.addRatings(station)<this.addRatings(this.tempStation)){
+          this.tempStation=station;
+        }
+    }
+    return this.tempStation;
+  }
  
 
   //run fuctions and then pass arrays as inpust to children to display

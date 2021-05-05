@@ -47,7 +47,6 @@ export class AppComponent {
 
   submission( string: string){
     this.showSubmissionComponent();
-    console.log("show submission "+string);
   }
 
   search( string : string){
