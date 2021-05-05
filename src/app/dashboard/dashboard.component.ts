@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
     this.highlightedArray=[];
     this.count=0;
 
-    //disyplays all stations
+    //disyplays only 35 stations !
     for(let station of this.tempList){
         if( this.count <35 ){
         this.listArray.push(station);
@@ -58,18 +58,27 @@ export class DashboardComponent implements OnInit {
 
     //compares the stations and replaces with better ones
     for(let hStation of this.tempList){
-        this.boolean=false;
-        if(this.addRatings(hStation)>this.addRatings(this.best[0]) && this.boolean==false){
-          this.best[0]=hStation;
-          this.boolean=true;
+        this.boolean=true;
+        
+        if(this.addRatings(hStation)>this.addRatings(this.best[0]) && hStation.operational){
+            if(this.boolean){
+              this.best[0]=hStation;
+              this.boolean=false;
+            }
+         }
+          
+        else if(this.addRatings(hStation)>this.addRatings(this.best[1])&& hStation.operational){
+          if(this.boolean){  
+            this.best[1]=hStation;
+            this.boolean=false;
+          }
         }
-        else if(this.addRatings(hStation)>this.addRatings(this.best[1])&& this.boolean==false){
-          this.best[1]=hStation;
-          this.boolean=true;
-        }
-        else if(this.addRatings(hStation)>this.addRatings(this.best[2])&& this.boolean==false){
-          this.best[2]=hStation;
-          this.boolean=true;
+        
+        else if(this.addRatings(hStation)>this.addRatings(this.best[2])&& hStation.operational){
+        if(this.boolean){
+            this.best[2]=hStation;
+            this.boolean=false;
+          }
         }
     }
     this.highlightedArray=this.best;
